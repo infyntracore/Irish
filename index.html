@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Iris Fashion · luxury saree & jewelry</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* style.css – ultra premium, mobile first, rose gold accents */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Poppins', sans-serif; }
+    body { background: #fffcf9; color: #1a1a1a; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, .logo { font-family: 'Playfair Display', serif; font-weight: 600; letter-spacing: -0.02em; }
+    .container { padding: 0 20px; max-width: 600px; margin: 0 auto; width: 100%; }
+    /* header glass sticky */
+    .main-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(255, 192, 203, 0.1); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 192, 203, 0.3); }
+    .header-top { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo { font-size: 1.5rem; background: linear-gradient(130deg, #b76e79 0%, #d4a5a5 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 1px; }
+    .hamburger { background: none; border: none; font-size: 1.6rem; color: #b76e79; cursor: pointer; display: block; } 
+    .header-actions { display: flex; gap: 16px; align-items: center; }
+    .icon-link { color: #2d2d2d; font-size: 1.3rem; position: relative; transition: transform 0.2s; }
+    .icon-link:hover { transform: scale(1.1); color: #b76e79; }
+    .cart-count { position: absolute; top: -8px; right: -10px; background: #b76e79; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 6px; border-radius: 30px; }
+    .signup-mobile { background: #fce9ec; padding: 6px 8px; border-radius: 50px; font-size: 1rem; }
+    /* search section */
+    .search-section { padding: 12px 0 4px; position: relative; }
+    .search-wrapper { display: flex; align-items: center; background: #fff; border: 1px solid #fadadd; border-radius: 50px; padding: 8px 18px; box-shadow: 0 4px 12px rgba(183,110,121,0.08); }
+    .search-wrapper i { color: #b76e79; margin-right: 10px; }
+    .search-wrapper input { flex: 1; border: none; outline: none; font-size: 1rem; background: transparent; }
+    .clear-search { background: none; border: none; color: #999; cursor: pointer; }
+    .search-history { background: white; border-radius: 20px; margin-top: 6px; box-shadow: 0 20px 35px -8px rgba(0,0,0,0.15); padding: 16px; border: 1px solid #ffe2e6; display: none; position: absolute; width: calc(100% - 40px); z-index: 99; }
+    .search-history.show { display: block; }
+    .history-header { display: flex; justify-content: space-between; font-weight: 500; }
+    #historyList { list-style: none; margin-top: 8px; }
+    #historyList li { padding: 8px 0; border-bottom: 1px solid #f1f1f1; display: flex; justify-content: space-between; }
+    /* category nav */
+    .category-nav { overflow-x: auto; white-space: nowrap; padding: 8px 0; -ms-overflow-style: none; scrollbar-width: none; }
+    .category-nav ul { display: flex; gap: 24px; list-style: none; }
+    .category-nav li { position: relative; }
+    .category-nav a { text-decoration: none; color: #1e1e1e; font-weight: 500; font-size: 0.95rem; cursor: pointer; }
+    .submenu { display: none; position: absolute; background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-radius: 16px; padding: 8px 0; top: 25px; }
+    .category-nav li:hover .submenu { display: block; }
+    /* hero banner */
+    .hero { background: #fef1f3; border-radius: 30px; margin: 20px; overflow: hidden; }
+    .hero-slide { display: flex; align-items: center; padding: 20px 20px 20px 24px; }
+    .hero-text { flex: 1; }
+    .subhead { color: #b76e79; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; }
+    .hero-text h1 { font-size: 1.9rem; line-height: 1.2; margin: 8px 0 12px; }
+    .rose { color: #b76e79; font-style: italic; }
+    .btn-primary { background: #b76e79; border: none; color: white; padding: 14px 28px; border-radius: 60px; font-weight: 600; font-size: 1rem; box-shadow: 0 10px 20px -8px rgba(183,110,121,0.4); transition: 0.2s; display: inline-block; text-decoration: none; cursor: pointer; }
+    .btn-primary:hover { background: #a45a65; transform: translateY(-2px); box-shadow: 0 18px 25px -10px #b76e79; }
+    .hero-image img { width: 140px; height: auto; border-radius: 30px; box-shadow: -10px 10px 30px rgba(0,0,0,0.1); }
+    /* section title */
+    .section-title { font-size: 1.7rem; margin: 40px 0 16px; position: relative; display: inline-block; }
+    .section-title::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 60%; height: 3px; background: #f6c6cc; border-radius: 10px; }
+    /* category grid */
+    .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .cat-card { background: white; border-radius: 30px; padding: 16px 6px; text-align: center; box-shadow: 0 6px 18px rgba(0,0,0,0.02); transition: 0.15s; text-decoration: none; color: black; border: 1px solid #fde7ea; cursor: pointer; }
+    .cat-card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -10px #f1b6c0; }
+    .cat-card img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 8px; border: 2px solid #ffe2e7; }
+    /* product card grid */
+    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .product-card { background: white; border-radius: 28px; padding: 14px 12px 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.02); transition: all 0.2s cubic-bezier(0.2, 0, 0, 1); border: 1px solid #fff0f2; position: relative; cursor: pointer; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 30px 40px -15px #dba1aa; }
+    .badge { position: absolute; top: 12px; left: 12px; background: #b76e79; color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; }
+    .product-image { width: 100%; border-radius: 20px; margin-bottom: 10px; aspect-ratio: 1/1.2; object-fit: cover; background: #faf0f2; }
+    .rating { color: #f9c74f; font-size: 0.8rem; margin: 5px 0; }
+    .price { font-weight: 700; font-size: 1.2rem; }
+    .old-price { text-decoration: line-through; color: #aaa; font-size: 0.9rem; margin-left: 6px; }
+    .add-cart { background: #fceaea; border: none; border-radius: 50px; padding: 8px 0; margin-top: 10px; font-weight: 600; color: #b76e79; transition: 0.2s; width: 100%; cursor: pointer; }
+    .add-cart:hover { background: #b76e79; color: white; }
+    /* promo banner glass */
+    .promo-banner .promo-card { background: rgba(255, 245, 247, 0.75); backdrop-filter: blur(10px); border-radius: 40px; padding: 30px 25px; border: 1px solid rgba(255,200,200,0.3); box-shadow: 0 15px 25px -8px #fadadd; margin: 30px 0; }
+    .btn-outline { border: 2px solid #b76e79; background: transparent; border-radius: 60px; padding: 12px 30px; font-weight: 600; display: inline-block; margin-top: 15px; color: #b76e79; text-decoration: none; cursor: pointer; }
+    .shipping-flex { display: flex; justify-content: space-around; background: #fce9ec; border-radius: 60px; padding: 18px; font-weight: 500; }
+    .rose-icon { color: #b76e79; }
+    /* footer */
+    .footer { background: #1e1e1e; color: #f0f0f0; padding: 40px 0 0; margin-top: 50px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .footer-col h4 { color: #f6c6cc; margin-bottom: 16px; }
+    .footer-col a { color: #ccc; text-decoration: none; }
+    .social-icons a { background: #333; margin-right: 12px; padding: 8px 12px; border-radius: 50px; display: inline-block; }
+    .footer-bottom { text-align: center; border-top: 1px solid #333; padding: 20px; font-size: 0.85rem; }
+    /* cart sidebar */
+    .cart-sidebar { position: fixed; right: -100%; top: 0; width: 85%; max-width: 360px; height: 100%; background: white; z-index: 200; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: right 0.3s ease; padding: 20px; overflow-y: auto; }
+    .cart-sidebar.open { right: 0; }
+    .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.2); z-index: 150; }
+    .overlay.show { display: block; }
+    .cart-header { display: flex; justify-content: space-between; align-items: center; }
+    .cart-item { display: flex; gap: 12px; margin: 20px 0; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+    .cart-item img { width: 60px; height: 70px; border-radius: 16px; object-fit: cover; }
+    .cart-item-details { flex:1; } 
+    .qty-control { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+    .qty-btn { background: #f1f1f1; border: none; width: 28px; height: 28px; border-radius: 50%; font-weight: bold; cursor: pointer; }
+    /* auth panels */
+    .auth-panel { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 380px; border-radius: 40px; padding: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.3); z-index: 300; display: none; }
+    .auth-panel.show { display: block; }
+    .close-auth { float: right; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+    .social-login { display: flex; gap: 10px; margin: 20px 0; }
+    .social-login button { flex: 1; padding: 12px; border-radius: 30px; border: 1px solid #ddd; background: white; cursor: pointer; }
+    .btn-google { color: #db4437; } .btn-fb { color: #4267B2; }
+    /* product detail modal */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; z-index: 250; }
+    .modal.show { display: flex; }
+    .modal-content { background: white; width: 90%; border-radius: 40px; padding: 20px; max-height: 90vh; overflow-y: auto; }
+    .detail-gallery img { width: 100%; border-radius: 30px; margin-bottom: 10px; }
+    .variant-selector { display: flex; gap: 12px; margin: 12px 0; }
+    .variant { border: 1px solid #ccc; padding: 6px 16px; border-radius: 50px; cursor: pointer; }
+    .variant.active { background: #b76e79; color: white; border-color: #b76e79; }
+    .stock { color: #27ae60; font-weight: 600; margin: 8px 0; }
+    .review { display: flex; gap: 12px; margin: 20px 0; background: #fafafa; padding: 16px; border-radius: 28px; }
+    .review img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+    /* category popup (product listing) */
+    .category-popup { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 500px; border-radius: 40px; padding: 25px; z-index: 350; max-height: 80vh; overflow-y: auto; display: none; }
+    .category-popup.show { display: block; }
+    .popup-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .popup-product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    /* updated checkout panel with address */
+    .checkout-panel { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 450px; border-radius: 40px; padding: 30px; z-index: 350; max-height: 85vh; overflow-y: auto; display: none; }
+    .checkout-panel.show { display: block; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-weight: 500; margin-bottom: 6px; color: #b76e79; }
+    .form-group input, .form-group textarea { width: 100%; padding: 14px 18px; border-radius: 50px; border: 1px solid #fadadd; font-size: 1rem; background: #fff9fb; }
+    .form-group textarea { border-radius: 30px; resize: vertical; }
+    .payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    .payment-option { border: 2px solid #f0f0f0; border-radius: 20px; padding: 14px; text-align: center; cursor: pointer; }
+    .payment-option.selected { border-color: #b76e79; background: #fef1f3; }
+    .row-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .trust-badge { background: #eaf9ea; padding: 12px; border-radius: 50px; text-align: center; margin: 20px 0; color: #2e7d32; font-weight: 500; }
+    /* responsive */
+    @media (min-width: 480px) { .container { max-width: 500px; } }
+    @media (min-width: 600px) { .container { max-width: 580px; } }
+  </style>
+</head>
+<body>
+  <!-- Sticky header / glass effect -->
+  <header class="main-header" id="mainHeader">
+    <div class="header-top container">
+      <div class="logo-area">
+        <button class="hamburger" id="hamburgerBtn" aria-label="menu"><i class="fas fa-bars"></i></button>
+        <a href="#" class="logo">IRIS FASHION</a>
+      </div>
+      <div class="header-actions">
+        <a href="#" class="icon-link" id="searchToggleBtn"><i class="fas fa-search"></i></a>
+        <a href="#" class="icon-link" id="loginIconBtn"><i class="fas fa-user"></i></a>
+        <a href="#" class="icon-link signup-mobile" id="signupIconBtn"><i class="fas fa-user-plus"></i></a>
+        <a href="#" class="icon-link cart-icon" id="cartBtn">
+          <i class="fas fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+    <!-- search bar (hidden by default, toggled) -->
+    <div class="search-section container" id="globalSearchBar" style="display: none;">
+      <div class="search-wrapper">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search for saree, jewelry..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-search"><i class="fas fa-times-circle"></i></button>
+      </div>
+      <!-- search history dropdown -->
+      <div class="search-history" id="searchHistoryDropdown">
+        <div class="history-header"><span>Recent</span><button id="removeAllHistory"><i class="fas fa-trash"></i> clear</button></div>
+        <ul id="historyList"></ul>
+      </div>
+    </div>
+    <!-- category menu (desktop / mobile dropdown) -->
+    <nav class="category-nav container" id="categoryNav">
+      <ul class="category-list">
+        <li><a class="cat-main-link" data-cat="saree">Saree <i class="fas fa-chevron-down"></i></a>
+          <ul class="submenu">
+            <li><a class="subcat-link" data-subcat="silk">Silk saree</a></li><li><a class="subcat-link" data-subcat="cotton">Cotton saree</a></li><li><a class="subcat-link" data-subcat="georgette">Georgette</a></li>
+          </ul>
+        </li>
+        <li><a class="cat-main-link" data-cat="jewelry">Jewelry <i class="fas fa-chevron-down"></i></a>
+          <ul class="submenu">
+            <li><a class="subcat-link" data-subcat="necklace">Necklace</a></li><li><a class="subcat-link" data-subcat="earrings">Earrings</a></li><li><a class="subcat-link" data-subcat="bangles">Bangles</a></li>
+          </ul>
+        </li>
+        <li><a class="cat-main-link" data-cat="new">New arrival</a></li>
+        <li><a class="cat-main-link" data-cat="discount">Discount</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- main content - HOME page (all sections) -->
+  <main class="home-page" id="homePage">
+    <!-- hero banner -->
+    <section class="hero">
+      <div class="hero-slide container">
+        <div class="hero-text">
+          <span class="subhead">Eid collection 2025</span>
+          <h1>Timeless <span class="rose">saree</span> & fine jewelry</h1>
+          <p>Handcrafted elegance, premium fabrics, 24K gold polish</p>
+          <a href="#" class="btn-primary">shop now <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1618191549942-46e5b140e9b2?w=400&auto=format" alt="luxury saree">
+        </div>
+      </div>
+    </section>
+
+    <!-- featured categories - clickable -->
+    <section class="featured-cats container">
+      <h2 class="section-title">shop by category</h2>
+      <div class="cat-grid">
+        <div class="cat-card" data-cat="premium-saree"><img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=200&auto=format" alt="saree"><span>Premium saree</span></div>
+        <div class="cat-card" data-cat="diamond-jewelry"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=200&auto=format" alt="jewelry set"><span>Diamond jewelry</span></div>
+        <div class="cat-card" data-cat="gold-earrings"><img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=200&auto=format" alt="earrings"><span>Gold earrings</span></div>
+        <div class="cat-card" data-cat="blouse"><img src="https://images.unsplash.com/photo-1604848690-1c5a1b4b3c0f?w=200&auto=format" alt="saree blouse"><span>Blouse piece</span></div>
+      </div>
+    </section>
+
+    <!-- featured products -->
+    <section class="featured-products container">
+      <h2 class="section-title">featured products</h2>
+      <div class="product-grid" id="featuredGrid"></div>
+    </section>
+
+    <!-- discount products -->
+    <section class="discount-products container">
+      <h2 class="section-title">limited discounts <span class="rose-badge">30-50% off</span></h2>
+      <div class="product-grid" id="discountGrid"></div>
+    </section>
+
+    <!-- promotional banner (glassmorphism) -->
+    <section class="promo-banner container">
+      <div class="promo-card">
+        <h3>Eid exclusive gift</h3>
+        <p>Free golden choker on orders above ৳15,000</p>
+        <a href="#" class="btn-outline">claim now</a>
+      </div>
+    </section>
+
+    <!-- new arrivals -->
+    <section class="new-arrivals container">
+      <h2 class="section-title">new arrivals</h2>
+      <div class="product-grid" id="newArrivalsGrid"></div>
+    </section>
+
+    <!-- free shipping banner -->
+    <section class="shipping-banner container">
+      <div class="shipping-flex">
+        <i class="fas fa-truck"></i><span>Free shipping on orders ৳3,000+</span>
+        <i class="fas fa-gem rose-icon"></i><span>30-day easy return</span>
+      </div>
+    </section>
+
+    <!-- quick view modals / product detail demo (will show when clicking quick view) -->
+    <div id="productModal" class="modal">
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>Iris Fashion</h4>
+        <p>Bangladesh's premier luxury saree & jewelry brand. elegance since 2020.</p>
+        <p><i class="fas fa-phone-alt"></i> +880 1709-123456 (Dhaka)</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>info</h4>
+        <ul><li><a href="#">about us</a></li><li><a href="#">contact</a></li><li><a href="#">privacy policy</a></li><li><a href="#">terms</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>help</h4>
+        <ul><li><a href="#">size guide</a></li><li><a href="#">shipping</a></li><li><a href="#">returns</a></li><li><a href="#">payment</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Iris Fashion – luxury redefined</div>
+  </footer>
+
+  <!-- cart sidebar (offcanvas) -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header"><h3>your bag</h3><button id="closeCart"><i class="fas fa-times"></i></button></div>
+    <div class="cart-items" id="cartItemsContainer"></div>
+    <div class="cart-footer"><div>total: <span id="cartTotal">৳0</span></div><button class="btn-primary" id="checkoutBtn">checkout</button></div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- auth panels (login / signup) -->
+  <div class="auth-panel" id="loginPanel">
+    <div class="auth-container"><button class="close-auth" id="closeLogin"><i class="fas fa-times"></i></button>
+      <h2>log in to iris</h2>
+      <form id="loginForm"><input type="email" placeholder="Email" required style="width:100%; padding:14px; margin:10px 0; border-radius:50px; border:1px solid #ddd;"><input type="password" placeholder="Password" required style="width:100%; padding:14px; margin:10px 0; border-radius:50px; border:1px solid #ddd;"><button type="submit" class="btn-primary btn-block" style="width:100%;">Login</button></form>
+      <div class="social-login"><button class="btn-google"><i class="fab fa-google"></i> Google</button><button class="btn-fb"><i class="fab fa-facebook-f"></i> Facebook</button></div>
+      <p style="text-align:center;"><a href="#">forgot password?</a></p>
+      <p style="text-align:center;">new here? <a href="#" id="switchToSignup">sign up</a></p>
+    </div>
+  </div>
+  <div class="auth-panel" id="signupPanel">
+    <div class="auth-container"><button class="close-auth" id="closeSignup"><i class="fas fa-times"></i></button>
+      <h2>join iris</h2>
+      <form id="signupForm"><input type="text" placeholder="Full name" required style="width:100%; padding:14px; margin:10px 0; border-radius:50px; border:1px solid #ddd;"><input type="email" placeholder="Email" required style="width:100%; padding:14px; margin:10px 0; border-radius:50px; border:1px solid #ddd;"><input type="text" placeholder="Phone" style="width:100%; padding:14px; margin:10px 0; border-radius:50px; border:1px solid #ddd;"><input type="password" placeholder="Password" required style="width:100%; padding:14px; margin:10px 0; border-radius:50px; border:1px solid #ddd;"><input type="password" placeholder="Confirm password" required style="width:100%; padding:14px; margin:10px 0; border-radius:50px; border:1px solid #ddd;"><button type="submit" class="btn-primary btn-block" style="width:100%;">Sign up</button></form>
+      <div class="social-login"><button class="btn-google"><i class="fab fa-google"></i> Google</button><button class="btn-fb"><i class="fab fa-facebook-f"></i> Facebook</button></div>
+      <p style="text-align:center;">already member? <a href="#" id="switchToLogin">log in</a></p>
+    </div>
+  </div>
+
+  <!-- Category Popup (for all category clicks) -->
+  <div class="category-popup" id="categoryPopup">
+    <div class="popup-header"><h3 id="popupTitle">Premium Saree</h3><button id="closePopup"><i class="fas fa-times"></i></button></div>
+    <div class="popup-product-grid" id="popupProducts"></div>
+  </div>
+
+  <!-- updated checkout panel with address & contact -->
+  <div class="checkout-panel" id="checkoutPanel">
+    <h3 style="text-align:center;">complete your order</h3>
+    <div class="trust-badge"><i class="fas fa-shield-alt"></i> 100% safe & secure checkout</div>
+    <div class="form-group">
+      <label>full name</label>
+      <input type="text" id="checkoutName" placeholder="Tanvir Ahmed" value="Tanvir Ahmed">
+    </div>
+    <div class="form-group">
+      <label>contact number</label>
+      <input type="tel" id="checkoutPhone" placeholder="+880 17XX XXXXXX" value="+880 1712 345678">
+    </div>
+    <div class="form-group">
+      <label>delivery address</label>
+      <textarea id="checkoutAddress" rows="2">House 12, Road 5, Gulshan, Dhaka 1212</textarea>
+    </div>
+    <div class="row-2col">
+      <div class="form-group"><label>city</label><input type="text" id="checkoutCity" value="Dhaka"></div>
+      <div class="form-group"><label>post code</label><input type="text" id="checkoutZip" value="1212"></div>
+    </div>
+    <div style="background:#f9f0f2; border-radius: 50px; padding:12px; margin: 10px 0;">
+      <span>delivery charge: ৳60</span> <span style="float:right;">free above ৳3000</span>
+    </div>
+    <div class="payment-methods">
+      <div class="payment-option selected" data-method="cod">COD</div>
+      <div class="payment-option" data-method="bkash">bKash</div>
+      <div class="payment-option" data-method="nagad">Nagad</div>
+      <div class="payment-option" data-method="card">Card</div>
+    </div>
+    <button class="btn-primary" id="placeOrderBtn" style="width:100%;">place order (demo)</button>
+    <button id="closeCheckout" style="margin-top:12px; background:none; border:none; text-decoration:underline; width:100%;">close</button>
+  </div>
+
+  <script>
+    (function() {
+      // ---------- GLOBAL DATA ----------
+      const products = [
+        { id:1, name:'Rose Silk Saree', price:12500, discount:9990, image:'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400', rating:4.8, reviews:34, badge:'-20%', featured:true, discountProduct:true, new:false, category:'saree' },
+        { id:2, name:'Gold Polished Necklace', price:8900, discount:7990, image:'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400', rating:4.9, reviews:27, badge:'-10%', featured:true, new:true, category:'jewelry' },
+        { id:3, name:'Organza Saree', price:8900, discount:0, image:'https://images.unsplash.com/photo-1618191549942-46e5b140e9b2?w=400', rating:4.7, reviews:42, badge:null, featured:false, discountProduct:true, new:true, category:'saree' },
+        { id:4, name:'Pearl Earrings', price:4500, discount:3800, image:'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400', rating:4.6, reviews:19, badge:'-15%', featured:true, discountProduct:true, category:'jewelry' },
+        { id:5, name:'Embroidered Blouse', price:3200, discount:2550, image:'https://images.unsplash.com/photo-1604848690-1c5a1b4b3c0f?w=400', rating:4.5, reviews:12, badge:'-20%', new:true, category:'blouse' },
+        { id:6, name:'Bengali Wedding Saree', price:18500, discount:15990, image:'https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400', rating:4.9, reviews:53, badge:'-13%', discountProduct:true, category:'saree' },
+        { id:7, name:'Diamond Set (Necklace+Earrings)', price:35000, discount:29900, image:'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400', rating:5.0, reviews:16, badge:'-15%', category:'jewelry' }
+      ];
+
+      let cart = JSON.parse(localStorage.getItem('irisCart')) || [];
+      let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
+      // DOM elements
+      const featuredGrid = document.getElementById('featuredGrid');
+      const discountGrid = document.getElementById('discountGrid');
+      const newArrivalsGrid = document.getElementById('newArrivalsGrid');
+      const cartCountSpan = document.getElementById('cartCount');
+      const cartSidebar = document.getElementById('cartSidebar');
+      const overlay = document.getElementById('overlay');
+      const cartItemsContainer = document.getElementById('cartItemsContainer');
+      const cartTotalSpan = document.getElementById('cartTotal');
+      const searchToggle = document.getElementById('searchToggleBtn');
+      const globalSearchBar = document.getElementById('globalSearchBar');
+      const searchInput = document.getElementById('searchInput');
+      const historyDropdown = document.getElementById('searchHistoryDropdown');
+      const historyList = document.getElementById('historyList');
+      const clearHistoryBtn = document.getElementById('removeAllHistory');
+      const clearSearchBtn = document.getElementById('clearSearchBtn');
+      const loginIcon = document.getElementById('loginIconBtn');
+      const signupIcon = document.getElementById('signupIconBtn');
+      const loginPanel = document.getElementById('loginPanel');
+      const signupPanel = document.getElementById('signupPanel');
+      const closeLogin = document.getElementById('closeLogin');
+      const closeSignup = document.getElementById('closeSignup');
+      const switchToSignup = document.getElementById('switchToSignup');
+      const switchToLogin = document.getElementById('switchToLogin');
+      const cartBtn = document.getElementById('cartBtn');
+      const closeCart = document.getElementById('closeCart');
+      const checkoutBtn = document.getElementById('checkoutBtn');
+      const checkoutPanel = document.getElementById('checkoutPanel');
+      const closeCheckout = document.getElementById('closeCheckout');
+      const placeOrderBtn = document.getElementById('placeOrderBtn');
+      const modal = document.getElementById('productModal');
+      const modalContent = document.getElementById('modalContent');
+      const categoryPopup = document.getElementById('categoryPopup');
+      const popupTitle = document.getElementById('popupTitle');
+      const popupProducts = document.getElementById('popupProducts');
+      const closePopup = document.getElementById('closePopup');
+
+      // Helper: render products
+      function renderProducts() {
+        if (featuredGrid) featuredGrid.innerHTML = products.filter(p => p.featured).map(p => cardHtml(p)).join('');
+        if (discountGrid) discountGrid.innerHTML = products.filter(p => p.discountProduct).map(p => cardHtml(p)).join('');
+        if (newArrivalsGrid) newArrivalsGrid.innerHTML = products.filter(p => p.new).map(p => cardHtml(p)).join('');
+      }
+      function cardHtml(p) {
+        return `<div class="product-card" data-id="${p.id}">
+          ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
+          <img src="${p.image}" class="product-image" alt="${p.name}">
+          <h4>${p.name}</h4>
+          <div class="rating">${'★'.repeat(Math.floor(p.rating))}${p.rating%1? '½':''} (${p.reviews})</div>
+          <div><span class="price">৳${p.discount || p.price}</span> ${p.discount ? `<span class="old-price">৳${p.price}</span>`:''}</div>
+          <button class="add-cart" data-id="${p.id}"><i class="fas fa-shopping-cart"></i> add</button>
+        </div>`;
+      }
+
+      function updateCartUI() {
+        let total = 0, count = 0;
+        cart.forEach(item => { count += item.qty; total += (item.discount || item.price) * item.qty; });
+        if (cartCountSpan) cartCountSpan.innerText = count;
+        if (cartItemsContainer) {
+          if (cart.length===0) cartItemsContainer.innerHTML = '<p style="padding:20px">your bag is empty</p>';
+          else {
+            cartItemsContainer.innerHTML = cart.map(item => `
+              <div class="cart-item" data-id="${item.id}">
+                <img src="${item.image}" width="50"> 
+                <div class="cart-item-details"><b>${item.name}</b> ৳${item.discount||item.price}<br>
+                  <div class="qty-control"><button class="qty-btn decr">-</button><span>${item.qty}</span><button class="qty-btn incr">+</button></div>
+                </div>
+                <button class="remove-item"><i class="fas fa-trash"></i></button>
+              </div>`).join('');
+          }
+        }
+        if (cartTotalSpan) cartTotalSpan.innerText = '৳' + total;
+        localStorage.setItem('irisCart', JSON.stringify(cart));
+      }
+
+      // search history
+      function renderHistory() {
+        if (!historyList) return;
+        historyList.innerHTML = searchHistory.map(term => `<li><span>${term}</span> <button class="remove-history-item" data-term="${term}"><i class="fas fa-times"></i></button></li>`).join('');
+      }
+      function addSearchTerm(term) {
+        if (!term.trim()) return;
+        searchHistory = [term, ...searchHistory.filter(t => t !== term)].slice(0,5);
+        localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+        renderHistory();
+      }
+
+      // show category popup with filtered products
+      function showCategoryPopup(title, filterFn) {
+        const filtered = products.filter(filterFn);
+        popupTitle.innerText = title;
+        popupProducts.innerHTML = filtered.length ? filtered.map(p => cardHtml(p)).join('') : '<p style="grid-column:span2; text-align:center;">no products found</p>';
+        categoryPopup.classList.add('show');
+        overlay.classList.add('show');
+      }
+
+      // Event listeners
+      document.addEventListener('click', (e) => {
+        // add to cart
+        if (e.target.classList.contains('add-cart') || e.target.closest('.add-cart')) {
+          const btn = e.target.closest('.add-cart');
+          const id = parseInt(btn.dataset.id);
+          const prod = products.find(p => p.id === id);
+          const existing = cart.find(c => c.id === id);
+          if (existing) existing.qty += 1;
+          else cart.push({ ...prod, qty: 1 });
+          updateCartUI();
+          e.stopPropagation();
+        }
+        // quick view / product detail
+        if (e.target.closest('.product-card') && !e.target.classList.contains('add-cart') && !e.target.closest('.add-cart')) {
+          const card = e.target.closest('.product-card');
+          const id = parseInt(card.dataset.id);
+          const prod = products.find(p => p.id === id);
+          if (!prod) return;
+          modalContent.innerHTML = `
+            <div class="detail-gallery"><img src="${prod.image}" alt=""></div>
+            <h2>${prod.name}</h2>
+            <p class="price">৳${prod.discount || prod.price} <span class="old-price">${prod.discount ? '৳'+prod.price : ''}</span></p>
+            <div class="variant-selector"><span class="variant active">small</span><span class="variant">medium</span></div>
+            <div class="variant-selector"><span class="variant active">rose gold</span><span class="variant">gold</span></div>
+            <p class="stock">✅ in stock</p>
+            <p>Premium handloom, soft texture. ✨</p>
+            <h4>specifications</h4><p>Material: Pure silk, Length: 5.5m</p>
+            <div class="review"><img src="https://randomuser.me/api/portraits/women/44.jpg"><div><b>Farhana</b> ★★★★☆ “excellent quality” <br> <small>2 days ago</small></div></div>
+            <button class="btn-primary add-cart" data-id="${prod.id}">add to cart</button>
+            <button class="btn-outline" style="margin-left:8px;">buy now</button>
+          `;
+          modal.classList.add('show');
+          overlay.classList.add('show');
+        }
+
+        // category clicks (home categories)
+        if (e.target.closest('.cat-card')) {
+          const cat = e.target.closest('.cat-card').dataset.cat;
+          if (cat === 'premium-saree') showCategoryPopup('Premium Saree', p => p.category === 'saree');
+          else if (cat === 'diamond-jewelry') showCategoryPopup('Diamond Jewelry', p => p.category === 'jewelry');
+          else if (cat === 'gold-earrings') showCategoryPopup('Gold Earrings', p => p.category === 'jewelry' && p.name.includes('Earring'));
+          else if (cat === 'blouse') showCategoryPopup('Blouse Piece', p => p.category === 'blouse');
+        }
+
+        // main category links
+        if (e.target.closest('.cat-main-link')) {
+          e.preventDefault();
+          const cat = e.target.closest('.cat-main-link').dataset.cat;
+          if (cat === 'saree') showCategoryPopup('All Sarees', p => p.category === 'saree');
+          else if (cat === 'jewelry') showCategoryPopup('All Jewelry', p => p.category === 'jewelry');
+          else if (cat === 'new') showCategoryPopup('New Arrivals', p => p.new);
+          else if (cat === 'discount') showCategoryPopup('Discounted Items', p => p.discountProduct);
+        }
+
+        // subcategory
+        if (e.target.closest('.subcat-link')) {
+          e.preventDefault();
+          const sub = e.target.closest('.subcat-link').dataset.subcat;
+          if (sub === 'silk') showCategoryPopup('Silk Sarees', p => p.category === 'saree' && p.name.includes('Silk'));
+          else if (sub === 'cotton') showCategoryPopup('Cotton Sarees', p => p.category === 'saree' && p.name.includes('Cotton')===false);
+          else if (sub === 'georgette') showCategoryPopup('Georgette', p => p.category === 'saree' && p.name.includes('Organza'));
+          else if (sub === 'necklace') showCategoryPopup('Necklaces', p => p.category === 'jewelry' && p.name.includes('Necklace'));
+          else if (sub === 'earrings') showCategoryPopup('Earrings', p => p.category === 'jewelry' && p.name.includes('Earring'));
+          else if (sub === 'bangles') showCategoryPopup('Bangles', p => p.category === 'jewelry' && p.name.includes('Bangles')===false);
+        }
+      });
+
+      // search toggle
+      searchToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        globalSearchBar.style.display = globalSearchBar.style.display === 'none' ? 'block' : 'none';
+      });
+      searchInput.addEventListener('input', (e) => {
+        const val = e.target.value;
+        if (val.length > 1) addSearchTerm(val);
+      });
+      clearSearchBtn.addEventListener('click', () => { searchInput.value = ''; });
+      searchInput.addEventListener('focus', () => {
+        if (searchHistory.length) historyDropdown.classList.add('show');
+      });
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-section')) historyDropdown.classList.remove('show');
+      });
+      clearHistoryBtn.addEventListener('click', () => { searchHistory = []; localStorage.setItem('searchHistory','[]'); renderHistory(); });
+
+      // auth panels
+      loginIcon.addEventListener('click', (e) => { e.preventDefault(); loginPanel.classList.add('show'); overlay.classList.add('show'); });
+      signupIcon.addEventListener('click', (e) => { e.preventDefault(); signupPanel.classList.add('show'); overlay.classList.add('show'); });
+      closeLogin.addEventListener('click', () => { loginPanel.classList.remove('show'); overlay.classList.remove('show'); });
+      closeSignup.addEventListener('click', () => { signupPanel.classList.remove('show'); overlay.classList.remove('show'); });
+      switchToSignup.addEventListener('click', (e) => { e.preventDefault(); loginPanel.classList.remove('show'); signupPanel.classList.add('show'); });
+      switchToLogin.addEventListener('click', (e) => { e.preventDefault(); signupPanel.classList.remove('show'); loginPanel.classList.add('show'); });
+
+      // cart sidebar
+      cartBtn.addEventListener('click', (e) => { e.preventDefault(); cartSidebar.classList.add('open'); overlay.classList.add('show'); });
+      closeCart.addEventListener('click', () => { cartSidebar.classList.remove('open'); overlay.classList.remove('show'); });
+
+      // overlay click closes all modals/popups
+      overlay.addEventListener('click', () => {
+        cartSidebar.classList.remove('open'); loginPanel.classList.remove('show'); signupPanel.classList.remove('show'); 
+        modal.classList.remove('show'); categoryPopup.classList.remove('show'); checkoutPanel.classList.remove('show');
+        overlay.classList.remove('show');
+      });
+
+      // cart qty events
+      cartItemsContainer.addEventListener('click', (e) => {
+        const itemDiv = e.target.closest('.cart-item');
+        if (!itemDiv) return;
+        const id = parseInt(itemDiv.dataset.id);
+        const cartItem = cart.find(c => c.id === id);
+        if (e.target.classList.contains('incr')) { cartItem.qty++; updateCartUI(); }
+        if (e.target.classList.contains('decr')) { if (cartItem.qty>1) cartItem.qty--; else cart = cart.filter(c => c.id !== id); updateCartUI(); }
+        if (e.target.closest('.remove-item')) { cart = cart.filter(c => c.id !== id); updateCartUI(); }
+      });
+
+      // checkout
+      checkoutBtn.addEventListener('click', () => { 
+        checkoutPanel.classList.add('show'); overlay.classList.add('show'); cartSidebar.classList.remove('open'); 
+      });
+      closeCheckout.addEventListener('click', () => { checkoutPanel.classList.remove('show'); overlay.classList.remove('show'); });
+      document.querySelectorAll('.payment-option').forEach(opt => opt.addEventListener('click', function() { 
+        document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected')); this.classList.add('selected'); 
+      }));
+      placeOrderBtn.addEventListener('click', () => { 
+        alert('Order placed (demo)!\nThank you for trusting Iris Fashion.'); 
+        cart = []; updateCartUI(); checkoutPanel.classList.remove('show'); overlay.classList.remove('show'); 
+      });
+
+      // hamburger menu
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const categoryNav = document.getElementById('categoryNav');
+      hamburgerBtn.addEventListener('click', () => {
+        categoryNav.style.display = categoryNav.style.display === 'none' ? 'block' : 'none';
+      });
+
+      // close modal
+      modal.addEventListener('click', (e) => { if (e.target === modal) { modal.classList.remove('show'); overlay.classList.remove('show'); } });
+      closePopup.addEventListener('click', () => { categoryPopup.classList.remove('show'); overlay.classList.remove('show'); });
+
+      // initial render
+      renderProducts();
+      updateCartUI();
+      renderHistory();
+    })();
+  </script>
+</body>
+</html>
